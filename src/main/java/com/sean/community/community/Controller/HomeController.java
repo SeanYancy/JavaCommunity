@@ -47,4 +47,9 @@ public class HomeController {
         indexPage.setViewName("/index");
         return indexPage;
     }
+
+    @RequestMapping(path = "/error", method = RequestMethod.GET)
+    public String getErrorPage() {
+        return "/error/500";
+    }
 }
