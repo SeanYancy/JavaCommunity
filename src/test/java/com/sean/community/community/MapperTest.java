@@ -2,9 +2,11 @@ package com.sean.community.community;
 
 import com.sean.community.community.dao.DiscussPostMapper;
 import com.sean.community.community.dao.LoginTicketMapper;
+import com.sean.community.community.dao.MessageMapper;
 import com.sean.community.community.dao.UserMapper;
 import com.sean.community.community.entity.DiscussPost;
 import com.sean.community.community.entity.LoginTicket;
+import com.sean.community.community.entity.Message;
 import com.sean.community.community.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +28,9 @@ public class MapperTest {
 
     @Autowired
     private LoginTicketMapper loginTicketMapper;
+
+    @Autowired
+    private MessageMapper messageMapper;
 
     @Test
     public void testSelectUser() {
@@ -95,5 +100,27 @@ public class MapperTest {
         loginTicketMapper.updateStatus("test", 1);
         loginTicket = loginTicketMapper.selectByTicket("test");
         System.out.println(loginTicket);
+    }
+
+    @Test
+    public void testSelectLetters() {
+        List<Message> list = messageMapper.selectConversations(111, 0, 20);
+        for (Message message: list) {
+            System.out.println(message);
+        }
+
+        int count = messageMapper.selectConversationCount(111);
+        System.out.println(count);
+
+        list = messageMapper.selectLetters("111_112", 0, 10);
+        for (Message message: list) {
+            System.out.println(message);
+        }
+
+        count = messageMapper.selectLetterCount("111_112");
+        System.out.println(count);
+
+        count = messageMapper.selectLetterUnreadCount(131, "111_131");
+        System.out.println(count);
     }
 }
