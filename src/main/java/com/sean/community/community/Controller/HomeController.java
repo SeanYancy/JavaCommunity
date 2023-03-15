@@ -5,7 +5,10 @@ import com.sean.community.community.entity.DiscussPost;
 import com.sean.community.community.entity.Page;
 import com.sean.community.community.entity.User;
 import com.sean.community.community.service.DiscussPostService;
+import com.sean.community.community.service.LikeService;
 import com.sean.community.community.service.UserService;
+import com.sean.community.community.util.CommunityConstant;
+import com.sean.community.community.util.CommunityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +22,14 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class HomeController {
+public class HomeController implements CommunityConstant {
     @Autowired
     private DiscussPostService discussPostService;
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LikeService likeService;
 
     @RequestMapping(path = "/index", method = RequestMethod.GET)
     public ModelAndView getIndexPage(Model model, Page page) {
@@ -39,6 +45,10 @@ public class HomeController {
                 map.put("post", post);
                 User user = userService.findUserById(post.getUserId());
                 map.put("user", user);
+
+                long likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_POST, post.getId());
+                map.put("likeCount", likeCount);
+
                 discussPosts.add(map);
             }
         }
