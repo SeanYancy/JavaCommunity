@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@ControllerAdvice(annotations = Controller.class)
+@ControllerAdvice(annotations = Controller.class) //控制器通知 Controller发生错误的时候会调用
 public class ExceptionAdvice {
 
     private static final Logger logger = LoggerFactory.getLogger(ExceptionAdvice.class);
