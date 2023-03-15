@@ -13,7 +13,7 @@
 <body>
 <div class="nk-container">
     <!-- 头部 -->
-    <header class="bg-dark sticky-top" th:replace="index :: header">
+    <header class="bg-dark sticky-top" th:replace="~{index :: header}">
         <div class="container">
             <!-- 导航 -->
             <nav class="navbar navbar-expand-lg navbar-dark">
@@ -127,7 +127,7 @@
     </div>
 
     <!-- 尾部 -->
-    <footer class="bg-dark" th:replace="index::footer">
+    <footer class="bg-dark" th:replace="~{index::footer}">
     </footer>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
