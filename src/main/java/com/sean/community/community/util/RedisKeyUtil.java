@@ -8,6 +8,7 @@ public class RedisKeyUtil {
     private static final String PREFIX_FOLLOWER = "follower";
     private static final String PREFIX_KAPTCHA = "kaptcha";
     private static final String PREFIX_TICKET = "ticket";
+    private static final String PREFIX_USER = "user";
 
 
 
@@ -45,4 +46,9 @@ public class RedisKeyUtil {
     public static String getTicketKey(String ticket) {
         return PREFIX_TICKET + SPLIT + ticket;
     }
+
+    public static String getUserKey(int userId) {
+        return PREFIX_USER + SPLIT + userId;
+    }
+
 }
