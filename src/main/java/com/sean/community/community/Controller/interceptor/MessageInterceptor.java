@@ -3,12 +3,13 @@ package com.sean.community.community.Controller.interceptor;
 import com.sean.community.community.entity.User;
 import com.sean.community.community.service.MessageService;
 import com.sean.community.community.util.HostHolder;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Component
 public class MessageInterceptor implements HandlerInterceptor {
